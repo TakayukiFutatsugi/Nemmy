@@ -1,6 +1,24 @@
-<% @users.each do |user| %>
-  <%= user.familyName %>
-  <%= user.lastName %>
-  <%= link_to "詳細", user_path(user) %>
- 
-<% end %>  
+<h2>求職者一覧</h2>
+<p>*スカウトは詳細ページから行えます</p>
+</br>
+<div class="ui grid">
+  <% @users.each do |user| %>
+    <div class="five wide column">
+      <div class="ui card">
+        <div class="content">
+          <h3><%= user.familyName + user.lastName %>様</h3>
+          </br>
+          <p>登録：<%= user.created_at.strftime('%Y年%m月%d日%H時%M分') %></p>
+          </br>
+          <p><%= user.prefecture %>在住</p>
+          </br>
+          <p>自己紹介：<%= truncate user.introduction, length: 50, omission: '...'%>
+          </br>
+          <div class="right floated">
+            <%= link_to "詳細", user_path(user), class:"ui blue button" %>
+          </div>  
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

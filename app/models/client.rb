@@ -7,7 +7,12 @@ class Client < ApplicationRecord
   has_many :jobs, dependent: :destroy
   has_many :scouts
   
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :industry, length: { maximum: 50 }
+  validates :business, length: { maximum: 50 }
+  validates :staff, length: { maximum: 50 }
+  validates :address, length: { maximum: 50 }
+  validates :introduction, length: { maximum: 1000 }
 end
 
 class Client::ParameterSanitizer < Devise::ParameterSanitizer

@@ -1,0 +1,22 @@
+<h2>登録企業一覧</h2>
+<p>*仕事への応募は各求人ページから行えます</p>
+</br>
+<div class="ui grid">
+  <% @clients.each do |client| %>
+    <div class="five wide column">
+      <div class="ui card">
+        <div class="content">
+          <h3><%= client.name %>様</h3>
+          </br>
+          <p><%= client.homepage %></p>
+          </br>
+          <p>会社紹介：<%= truncate client.introduction, length: 50, omission: '...'%>
+          </br>
+          <div class="right floated">
+            <%= link_to "詳細", client_path(client), class:"ui blue button" %>
+          </div>  
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

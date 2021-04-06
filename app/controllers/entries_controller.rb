@@ -1,5 +1,10 @@
 class EntriesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only:[:create]
+  before_action :authenticate_client!, only:[:index]
+  
+  def index
+    @entries = Entry.all.order(id: "DESC")
+  end
   
   def create
     job = Job.find(params[:job_id])

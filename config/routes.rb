@@ -12,13 +12,19 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations'
   }
+  resources :clients, only:[:index, :show]
+  
+  resources :users, only:[:index, :show] do
+    resources :scouts, only:[:create]
+  end
   
   resources :jobs do
     resources :entries, only:[:create]
   end
   
-  resources :users, only:[:index, :show] do
-    resources :scouts, only:[:create]
-  end  
+  resources :entries, only:[:index]
+
+  resources :scouts, only:[:index]
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

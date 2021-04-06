@@ -1,0 +1,25 @@
+<h2>応募一覧</h2>
+</br>
+<div class="ui grid">
+  <% @entries.each do |entry| %>
+    <% if entry.job.client == current_client %>
+      <div class="five wide column">
+        <div class="ui card">
+          <div class="content">
+            <h3><%= entry.user.familyName + entry.user.lastName %>様</h3>
+            </br>
+            <p>
+            <%= entry.created_at.strftime('%Y年%m月%d日%H時%M分') %>に</br>
+            <strong><%= entry.job.title %></strong>へ応募しました</p>
+            </br>
+            <p><%= truncate entry.user.introduction, length: 50, omission: '...'%>
+            </br>
+            <div class="right floated">
+              <%= link_to "詳細", user_path(entry.user), class:"ui blue button" %>
+            </div>  
+          </div>
+        </div>
+      </div>
+    <% end %>  
+  <% end %>
+</div>

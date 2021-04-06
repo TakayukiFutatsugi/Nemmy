@@ -1,52 +1,67 @@
-<h2>Sign up</h2>
-
+<h2>求職者様新規登録</h2><%= render "users/shared/links" %>
+</br>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
+  <div class="ui form">
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :姓 %>
+        <%= f.text_field :familyName %>
+      </div>
+      <div class="field">
+        <%= f.label :名 %>
+        <%= f.text_field :lastName %>
+      </div>
+    </div>  
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :セイ %>
+        <%= f.text_field :familyNameDetail %>
+      </div>
+      <div class="field">
+        <%= f.label :メイ %>
+        <%= f.text_field :lastNameDetail %>
+      </div>
+    </div>
+    
+    <div class="three fields">
+      <div class="field">
+        <%= f.label :性別 %>
+        <%= f.select :gender, User.genders.keys, {} %>
+      </div>
+      <div class="field">
+        <%= f.label :居住地 %>
+        <%= f.select :prefecture, User.prefectures.keys, {} %>
+      </div>
+      <div class="field">
+        <%= f.label :生年月日 %>
+        <%= f.date_select(:birthdate, start_year: 1970, end_year: Date.today.year) %>
+      </div>
+    </div>
+    
+    <div class="field">
+      <%= f.label :メールアドレス %>
+      <%= f.email_field :email, autocomplete: "email" %>
+    </div>
+    
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :パスワード %>
+        <% if @minimum_password_length %>
+        (<%= @minimum_password_length %> 文字以上)
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+    
+      <div class="field">
+        <%= f.label :パスワード確認 %>
+        (左のパスワードをもう一度入力してください)
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+    </div>  
   
-  <div class="field">
-    <%= f.label :familyName %><br />
-    <%= f.text_field :familyName, autofocus: true, autocomplete: "email" %>
-  </div>  <div class="field">
-    <%= f.label :lastName %><br />
-    <%= f.text_field :lastName, autofocus: true, autocomplete: "email" %>
-  </div>  <div class="field">
-    <%= f.label :familyNameDetail %><br />
-    <%= f.text_field :familyNameDetail, autofocus: true, autocomplete: "email" %>
-  </div>  <div class="field">
-    <%= f.label :lastNameDetail %><br />
-    <%= f.text_field :lastNameDetail, autofocus: true, autocomplete: "email" %>
-  </div>
-  
-  <%= f.label :gender %>
-  <%= f.select :gender, User.genders.keys, {} %>
-  
-  <%= f.label :生年月日 %>
-  <%= f.date_select(:birthdate, start_year: 1970, end_year: Date.today.year) %>
-
-  <%= f.label :居住地 %>
-  <%= f.select :prefecture, User.prefectures.keys, {} %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+    <div class="actions">
+      <%= f.submit "登録", class:"ui blue button right floated" %>
+    </div>
   </div>
 <% end %>
-
-<%= render "users/shared/links" %>

@@ -1,2 +1,87 @@
-<h1>Jobs#edit</h1>
-<p>Find me in app/views/jobs/edit.html.erb</p>
+<h2>求人情報編集</h2>
+</br>
+<%= form_with model:@job, local: true do |f| %>
+  <div class="ui form">
+    <div class="field">
+      <%= f.label :タイトル %>
+      <%= f.text_field :title %>
+      (必須・50文字まで)
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :雇用形態 %>
+        <%= f.select :status, Job.statuses.keys, {} %>
+      (必須)
+      </div>
+      <div class="field">
+        <%= f.label :想定給与 %>
+        <%= f.text_field :salary %>
+        (必須)
+      </div>
+    </div>  
+    <div class="field">
+      <%= f.label :福利厚生 %>
+      <%= f.text_field :benefitProgram %>
+      (必須・300文字まで)
+    </div>
+    <div class="field">
+      <%= f.label :休日休暇 %>
+      <%= f.text_field :holiday %>
+      (必須)
+    </div>
+    <div class="field">
+      <%= f.label :研修・育成制度 %>
+      <%= f.text_field :training %>
+      (300文字まで)
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :主に使用する言語 %>
+        <%= f.text_field :language %>
+        (100文字まで)
+      </div>
+      <div class="field">
+        <%= f.label :主に使用するフレームワーク %>
+        <%= f.text_field :framework %>
+        (100文字まで)
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label :求める人物像 %>
+      <%= f.text_field :characteristics %>
+      (100文字まで)
+    </div>
+    <div class="field">
+      <%= f.label :歓迎スキル %>
+      <%= f.text_field :skillset %>
+      (100文字まで)
+    </div>
+    <div class="field">
+      <%= f.label :選考プロセス %>
+      <%= f.text_field :selectionProcess %>
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :勤務開始予定日 %>
+        <%= f.date_select(:startingDate, start_year: Date.today.year, end_year: Date.today.year+2) %>
+      </div>
+      <div class="field">
+        <%= f.label :勤務地 %>
+        <%= f.select :workplace, Job.workplaces.keys, {} %>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label :アクセス %>
+      <%= f.text_field :access %>
+      (100文字まで)
+    </div>
+    <div class="field">
+      <%= f.label :仕事詳細 %>
+      <%= f.text_area :description %>
+      (必須・1000文字まで)
+    </div>
+    
+    <%= f.submit "変更を保存", class:"ui blue button right floated" %>
+  
+  </div>
+<% end %>

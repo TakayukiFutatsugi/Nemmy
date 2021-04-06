@@ -2,13 +2,19 @@ class Job < ApplicationRecord
   belongs_to :client
   has_many :entries
   
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 50 }
   validates :status, presence: true
   validates :salary, presence: true
-  validates :benefitProgram, presence: true
+  validates :benefitProgram, presence: true, length: { maximum: 300 }
   validates :holiday, presence: true
-  validates :description, presence: true
-  
+  validates :description, presence: true, length: { maximum: 1000 }
+  validates :language, length: { maximum: 100 }
+  validates :framework, length: { maximum: 100 } 
+  validates :characteristics, length: { maximum: 100 }
+  validates :skillset, length: { maximum: 100 }
+  validates :training, length: { maximum: 300 }
+  validates :access, length: { maximum: 100 }
+    
   enum status: {
     正社員:0,契約社員:1,業務委託:2,インターン:3,パート・アルバイト:4
   }

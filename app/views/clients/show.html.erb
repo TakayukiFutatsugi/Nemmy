@@ -1,15 +1,49 @@
-<h2>仕事一覧</h2>
-<% unless user_signed_in? || client_signed_in? %>
-  <p>*応募にはログインが必要です</p>
-<% end %>  
+<h2><%= @client.name %>様詳細</h2>
+<p>*仕事への応募は各求人ページから行えます</p>
 </br>
+<div>
+  <table class="ui definition table">
+    <tbody>
+      <tr>
+        <td class="two wide column">会社名</td>
+        <td><%= @client.name %></td>
+      </tr>
+      <tr>
+        <td>会社ホームページ</td>
+        <td><%= @client.homepage %></td>
+      </tr>
+      <tr>
+        <td>業界</td>
+        <td><%= @client.industry %> </td>
+      </tr>
+      <tr>
+        <td>事業内容</td>
+        <td><%= @client.business %></td>
+      </tr>
+      <tr>
+        <td>従業員数</td>
+        <td><%= @client.staff %></td>
+      </tr>
+      <tr>
+        <td>本社所在地</td>
+        <td><%= @client.address %></td>
+      </tr>
+      <tr>
+        <td>会社紹介</td>
+        <td><%= @client.introduction %></td>
+      </tr>
+      <tr>
+    </tbody>
+  </table>
+</div>
+</br>
+<h3><%= @client.name %>様の求人一覧</h3>
 <div class="ui grid">
   <% @jobs.each do |job| %>
     <div class="five wide column">
       <div class="ui card">
         <div class="content">
           <h3><%= job.title %></h3>
-          <h4><%= job.client.name %></h4>
           </br>
           <div><%= job.created_at.strftime('%Y年%m月%d日%H時%M分') %>投稿</div>
           </br>
@@ -22,10 +56,6 @@
                 <% if user_signed_in? %>
                   <%= link_to "応募", job_entries_path(job), method: :post, data: { confirm: "登録データが企業様へ送られます。応募してよろしいですか?" }, class:"ui blue button" %>
                 <% end %>
-                <% if client_signed_in? && job.client == current_client %>
-                  <%= link_to "編集", edit_job_path(job), class:"ui blue button" %>
-                  <%= link_to "削除", job_path(job), method: :delete, data: { confirm: "削除してよろしいですか?" }, class:"ui blue button" %>
-                <% end %>
               </div>
             </div>  
           </div>
@@ -34,6 +64,3 @@
     </div>
   <% end %>
 </div>
-<% if client_signed_in? %>
-  <%= link_to "新規投稿", new_job_path, class:"ui blue button right floated" %>
-<% end %>  

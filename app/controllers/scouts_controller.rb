@@ -1,5 +1,10 @@
 class ScoutsController < ApplicationController
-  before_action :authenticate_client!
+  before_action :authenticate_client!, only:[:create]
+  before_action :authenticate_user!, only:[:index]
+  
+  def index
+    @scouts = Scout.all.order(id: "DESC")
+  end
   
   def create
     user = User.find(params[:user_id])

@@ -1,43 +1,243 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+<h2>プロフィール編集</h2>
+</br>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
+  <div class="ui form">
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :姓 %>
+        <%= f.text_field :familyName %>
+        (必須)
+      </div>
+      <div class="field">
+        <%= f.label :名 %>
+        <%= f.text_field :lastName %>
+        (必須)
+      </div>
+    </div>  
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :セイ %>
+        <%= f.text_field :familyNameDetail %>
+        (必須)
+      </div>
+      <div class="field">
+        <%= f.label :メイ %>
+        <%= f.text_field :lastNameDetail %>
+        (必須)
+      </div>
+    </div>
+    
+    <div class="three fields">
+      <div class="field">
+        <%= f.label :性別 %>
+        <%= f.select :gender, User.genders.keys, {} %>
+        (必須)
+      </div>
+      <div class="field">
+        <%= f.label :居住地 %>
+        <%= f.select :prefecture, User.prefectures.keys, {} %>
+        (必須)
+      </div>
+      <div class="field">
+        <%= f.label :生年月日 %>
+        <%= f.date_select(:birthdate, start_year: 1970, end_year: Date.today.year) %>
+        (必須)
+      </div>
+    </div>
+    
+    <p><strong>学歴</strong></p>
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :高校卒業年月 %>
+        <%= f.date_select(:firstEducation, discard_day: true, prompt: "--", start_year: 1970, end_year: Date.today.year+10) %>
+      </div>
+      <div class="field">
+        <%= f.label :卒業高校名 %>
+        <%= f.text_field :firstEducationDetail %>
+      </div>
+    </div>
+    
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :大学・専門学校等卒業年月 %>
+        <%= f.date_select(:secondEducation, discard_day: true, prompt: "--", start_year: 1970, end_year: Date.today.year+10) %>
+      </div>
+      <div class="field">
+        <%= f.label :卒業学校名 %>
+        <%= f.text_field :secondEducationDetail %>
+      </div>
+    </div>
+    
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :大学院等卒業年月 %>
+        <%= f.date_select(:thirdEducation, discard_day: true, prompt: "--", start_year: 1970, end_year: Date.today.year+10) %>
+      </div>
+      <div class="field">
+        <%= f.label :卒業学校・機関名 %>
+        <%= f.text_field :thirdEducationDetail %>
+      </div>
+    </div>
+    
+    <p><strong>職歴</strong></p>
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :職歴1 %>
+        <%= f.date_select(:firstCareer, discard_day: true, prompt: "--", start_year: 1970, end_year: Date.today.year+10) %>
+      </div>
+      <div class="field">
+        <%= f.label :企業名や役職など %>
+        <%= f.text_field :firstCareerDetail %>
+      </div>
+    </div>
+    
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :職歴2 %>
+        <%= f.date_select(:secondCareer, discard_day: true, prompt: "--", start_year: 1970, end_year: Date.today.year+10) %>
+      </div>
+      <div class="field">
+        <%= f.label :企業名や役職など %>
+        <%= f.text_field :secondCareerDetail %>
+      </div>
+    </div>
+    
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :職歴3 %>
+        <%= f.date_select(:thirdCareer, discard_day: true, prompt: "--", start_year: 1970, end_year: Date.today.year+10) %>
+      </div>
+      <div class="field">
+        <%= f.label :企業名や役職など %>
+        <%= f.text_field :thirdCareerDetail %>
+      </div>
+    </div>
+    
+    <div class="field">
+      <%= f.label :資格 %>
+      <%= f.text_field :certification %>
+      (100文字まで)
+    </div>
+    
+    <div class="field">
+      <%= f.label :エンジニア志望理由 %>
+      <%= f.text_field :reason %>
+      (100文字まで)
+    </div>
+    
+    <div class="field">
+      <%= f.label :学習期間 %>
+      <%= f.text_field :duration %>
+    </div>
+    
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :長所 %>
+        <%= f.text_field :strongPoint %>
+        (100文字まで)
+      </div>
+      <div class="field">
+        <%= f.label :短所 %>
+        <%= f.text_field :weakPoint %>
+        (100文字まで)
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label :エンジニアとしての目標 %>
+      <%= f.text_field :goal %>
+      (100文字まで)
+    </div>
+  
+    <div class="field">
+      <%= f.label :学習に使用しているサイト・書籍など %>
+      <%= f.text_field :learningResource %>
+    </div>
+    <div class="field">
+      <%= f.label :情報収集に使用しているサイト・書籍など %>
+      <%= f.text_field :informationResource %>
+    </div>
+    
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :学習した言語 %>
+        <%= f.text_field :language %>
+        (100文字まで)
+      </div>
+      <div class="field">
+        <%= f.label :学習したフレームワーク %>
+        <%= f.text_field :framework %>
+        (100文字まで)
+      </div>
+    </div>
+    
+    <div class="field">
+      <%= f.label :ポートフォリオ %>
+      <%= f.text_field :portfolio %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :作ってみたいプロダクト %>
+      <%= f.text_field :product %>
+      (100文字まで)
+    </div>
+    
+    <div class="field">
+      <%= f.label :自己紹介 %>
+      <%= f.text_area :introduction %>
+      (1000文字まで)
+    </div>
+    
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :希望勤務地 %>
+        <%= f.select :workplace, User.workplaces.keys, {} %>
+      </div>
+      <div class="field">
+        <%= f.label :希望給与 %>
+        <%= f.text_field :salary %>
+      </div>
+    </div>
+    
+    <div class="field">
+      <%= f.label :勤務開始可能日 %>
+      <%= f.date_select(:startingDate, start_year: Date.today.year, end_year: Date.today.year+2) %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :メールアドレス %>
+      <%= f.email_field :email, autocomplete: "email" %>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
+    <div class="two fields">
+      <div class="field">
+        <%= f.label :新しいパスワード %> (変更の必要がなければ空白のままで問題ございません)
+        <% if @minimum_password_length %>
+          <%= @minimum_password_length %> 文字以上
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+      <div class="field">
+        <%= f.label :新しいパスワード確認 %> (左のパスワードをもう一度入力してください)
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+    </div>
+  
+    <div class="field">
+      <%= f.label :現在のパスワード %> (変更を確定するために現在のパスワードを入力してください)
+      <%= f.password_field :current_password, autocomplete: "current-password" %>
+    </div>
+  
+    <div class="actions">
+      <%= f.submit "変更を保存", class:"ui blue button right floated" %>
+    </div>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+</br>
+</br>
+</br>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<h3>アカウントの削除</h3>
+<p><%= link_to "アカウント削除", registration_path(resource_name), data: { confirm: "削除してよろしいですか?" }, method: :delete, class:"ui blue button" %></p>

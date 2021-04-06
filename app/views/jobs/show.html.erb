@@ -1,7 +1,111 @@
-<h1>Jobs#show</h1>
-<p>Find me in app/views/jobs/show.html.erb</p>
+<h2>求人詳細</h2>
+</br>
+<div>
+  <table class="ui definition table">
+    <tbody>
+      <tr>
+        <td class="two wide column">タイトル</td>
+        <td><%= @job.title %></td>
+      </tr>
+      <tr>
+        <td>雇用形態</td>
+        <td><%= @job.status %></td>
+      </tr>
+      <tr>
+        <td>想定給与</td>
+        <td><%= @job.salary %> </td>
+      </tr>
+      <tr>
+        <td>福利厚生</td>
+        <td><%= @job.benefitProgram %></td>
+      </tr>
+      <tr>
+        <td>休日休暇</td>
+        <td><%= @job.holiday %></td>
+      </tr>
+      <tr>
+        <td>研修・育成制度</td>
+        <td><%= @job.training %></td>
+      </tr>
+      <tr>
+        <td>主に使用する言語</td>
+        <td><%= @job.language %></td>
+      </tr>
+      <tr>
+        <td>主に使用する</br>フレームワーク</td>
+        <td><%= @job.framework %></td>
+      </tr>
+      <tr>
+        <td>求める人物像</td>
+        <td><%= @job.characteristics %></td>
+      </tr>
+      <tr>
+        <td>歓迎スキル</td>
+        <td><%= @job.skillset %></td>
+      </tr>
+      <tr>
+        <td>選考プロセス</td>
+        <td><%= @job.selectionProcess %></td>
+      </tr>
+      <tr>
+        <td>勤務開始予定日</td>
+        <td><%= @job.startingDate %></td>
+      </tr>
+      <tr>
+        <td>勤務地</td>
+        <td><%= @job.workplace %></td>
+      </tr>
+      <tr>
+        <td>アクセス</td>
+        <td><%= @job.access %></td>
+      </tr>
+      <tr>
+        <td>仕事詳細</td>
+        <td><%= @job.description %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-  <%= @job.title %>
-  <%= @job.description %>
+</br>
+<h3>会社情報</h3>
+</br>
 
-<%= link_to "応募", job_entries_path(@job), method: :post %>
+<div>
+  <table class="ui definition table">
+    <tbody>
+      <tr>
+        <td class="two wide column">会社名</td>
+        <td><%= @job.client.name %></td>
+      </tr>
+      <tr>
+        <td>ホームページ</td>
+        <td><%= @job.client.homepage %></td>
+      </tr>
+      <tr>
+        <td>業界</td>
+        <td><%= @job.client.industry %></td>
+      </tr>
+      <tr>
+        <td>事業内容</td>
+        <td><%= @job.client.business %></td>
+      </tr>
+      <tr>
+        <td>従業員数</td>
+        <td><%= @job.client.staff %></td>
+      </tr>
+      <tr>
+        <td>本社所在地</td>
+        <td><%= @job.client.address %></td>
+      </tr>
+      <tr>
+        <td>会社紹介</td>
+        <td><%= @job.client.introduction %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</br>
+<% if user_signed_in? %>
+  <%= link_to "応募", job_entries_path(@job), method: :post,data: { confirm: "登録データが企業様へ送られます。応募してよろしいですか?" }, class:"ui blue button right floated" %>
+<% end %>

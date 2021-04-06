@@ -14,7 +14,15 @@ class User < ApplicationRecord
   validates :gender, presence: true
   validates :birthdate, presence: true
   validates :prefecture, presence: true
-  
+  validates :certification, length: { maximum: 100 }
+  validates :reason, length: { maximum: 100 }
+  validates :strongPoint, length: { maximum: 100 }
+  validates :weakPoint, length: { maximum: 100 }
+  validates :goal, length: { maximum: 100 }
+  validates :language, length: { maximum: 100 }
+  validates :framework, length: { maximum: 100 }
+  validates :product, length: { maximum: 100 }
+  validates :introduction, length: { maximum: 1000 }
   
   enum gender: {
     男性:0,女性:1
