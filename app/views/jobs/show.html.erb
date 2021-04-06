@@ -1,0 +1,7 @@
+<h1>Jobs#show</h1>
+<p>Find me in app/views/jobs/show.html.erb</p>
+
+  <%= @job.title %>
+  <%= @job.description %>
+
+<%= link_to "応募", job_entries_path(@job), method: :post %>

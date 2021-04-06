@@ -1,0 +1,29 @@
+<h1>Jobs#index</h1>
+<p>Find me in app/views/jobs/index.html.erb</p>
+
+<% @jobs.each do |job| %>
+  <%= job.title %>
+  <%= job.description %>
+  <%= job.created_at %>
+  <%= job.client.email %>
+
+  
+  <%= link_to "job詳細", job_path(job) %>
+  <%= link_to "job編集", edit_job_path(job) %>
+  <%= link_to "job削除", job_path(job), method: :delete %>
+<% end %>
+  
+  <%= link_to "ユーザー登録", new_user_registration_path %>
+  <%= link_to "クライアント登録", new_client_registration_path %>
+  
+  <%= link_to "ユーザーログアウト", destroy_user_session_path, method: :delete %>
+  <%= link_to "クライアントログアウト", destroy_client_session_path, method: :delete %>
+  
+  <%= link_to "job新規", new_job_path %>
+  <%= link_to "ユーザー一覧", users_path %>
+<% if user_signed_in? %>
+  <%= current_user.familyName + current_user.lastName %>
+<% end %>  
+<% if client_signed_in? %>
+  <%= current_client.name %>
+<% end %>  

@@ -1,0 +1,7 @@
+  
+  <%= form_with model:@scout, url:user_scouts_path(@user), local: true do |f| %>
+    <%= f.label :message %>
+    <%= f.text_area :message %>
+    
+    <%= f.submit "scout" %>
+  <% end %> 

@@ -1,0 +1,26 @@
+<h1>Jobs#new</h1>
+<p>Find me in app/views/jobs/new.html.erb</p>
+
+<%= form_with model:@job, local: true do |f| %>
+  
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  
+  <%= f.label :status %>
+  <%= f.select :status, Job.statuses.keys, {} %>
+  
+  <%= f.label :salary %>
+  <%= f.text_field :salary %>
+  
+  <%= f.label :benefitProgram %>
+  <%= f.text_field :benefitProgram %>
+  
+  <%= f.label :holiday %>
+  <%= f.text_field :holiday %>
+  
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  
+  <%= f.submit "submit" %>
+  
+<% end %>  
