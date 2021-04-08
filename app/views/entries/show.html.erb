@@ -1,0 +1,117 @@
+<h2><%= @user.familyName + @user.lastName %>様詳細</h2>
+<p>*記載のメールアドレスまで連絡を差し上げてください</p>
+</br>
+<div>
+  <table class="ui definition table">
+    <tbody>
+      <tr>
+        <td class="three wide column">氏名</td>
+        <td><%= @user.familyName + @user.lastName %></td>
+      </tr>
+      <tr>
+        <td>フリガナ</td>
+        <td><%= @user.familyNameDetail + @user.lastNameDetail %></td>
+      </tr>
+      <tr>
+        <td>性別</td>
+        <td><%= @user.gender %> </td>
+      </tr>
+      <tr>
+        <td>居住地</td>
+        <td><%= @user.prefecture %></td>
+      </tr>
+      <tr>
+        <td>学歴1</td>
+        <td><%= @user.firstEducation %> <%= @user.firstEducationDetail %>卒業</td>
+      </tr>
+      <tr>
+        <td>学歴2</td>
+        <td><%= @user.secondEducation %> <%= @user.secondEducationDetail %>卒業</td>
+      </tr>
+      <tr>
+        <td>学歴3</td>
+        <td><%= @user.thirdEducation %> <%= @user.thirdEducationDetail %>卒業</td>
+      </tr>
+      <tr>
+        <td>職歴1</td>
+        <td><%= @user.firstCareer %> <%= @user.firstCareerDetail %></td>
+      </tr>
+      <tr>
+        <td>職歴2</td>
+        <td><%= @user.secondCareer %> <%= @user.secondCareerDetail %></td>
+      </tr>
+      <tr>
+        <td>職歴3</td>
+        <td><%= @user.thirdCareer %> <%= @user.thirdCareerDetail %></td>
+      </tr>
+      <tr>
+        <td>資格</td>
+        <td><%= @user.certification%></td>
+      </tr>
+      <tr>
+        <td>エンジニア志望理由</td>
+        <td><%= @user.reason %></td>
+      </tr>
+      <tr>
+        <td>学習期間</td>
+        <td><%= @user.duration %></td>
+      </tr>
+      <tr>
+        <td>長所</td>
+        <td><%= @user.strongPoint %></td>
+      </tr>
+      <tr>
+        <td>短所</td>
+        <td><%= @user.weakPoint %></td>
+      </tr>
+      <tr>
+        <td>エンジニアとしての目標</td>
+        <td><%= @user.goal %></td>
+      </tr>
+      <tr>
+        <td>学習に使用している</br>サイト・書籍など</td>
+        <td><%= @user.learningResource %></td>
+      </tr>
+      <tr>
+        <td>情報収集に使用している</br>サイト・書籍など</td>
+        <td><%= @user.informationResource %></td>
+      </tr>
+      <tr>
+        <td>学習した言語</td>
+        <td><%= @user.language %></td>
+      </tr>
+      <tr>
+        <td>学習したフレームワーク</td>
+        <td><%= @user.framework %></td>
+      </tr>
+      <tr>
+        <td>ポートフォリオ</td>
+        <td><%= @user.portfolio %></td>
+      </tr>
+      <tr>
+        <td>作りたいプロダクト</td>
+        <td><%= @user.product %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= @user.email %> </td>
+      </tr>
+      <tr>
+        <td>自己紹介</td>
+        <td><%= @user.introduction %></td>
+      </tr>
+      <tr>
+        <td>希望勤務地</td>
+        <td><%= @user.workplace %></td>
+      </tr>
+      <tr>
+        <td>希望給与</td>
+        <td><%= @user.salary %></td>
+      </tr>
+      <tr>
+        <td>勤務開始可能日</td>
+        <td><%= @user.startingDate %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -15,7 +15,7 @@
             <p><%= truncate entry.user.introduction, length: 50, omission: '...'%>
             </br>
             <div class="right floated">
-              <%= link_to "詳細", user_path(entry.user), class:"ui blue button" %>
+              <%= link_to "詳細", job_entry_path(entry.job, entry.user), class:"ui blue button" %>
             </div>  
           </div>
         </div>

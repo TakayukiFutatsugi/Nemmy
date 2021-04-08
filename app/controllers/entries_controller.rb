@@ -6,6 +6,10 @@ class EntriesController < ApplicationController
     @entries = Entry.all.order(id: "DESC")
   end
   
+  def show
+    @user = User.find(params[:id])
+  end  
+  
   def create
     job = Job.find(params[:job_id])
     @entry = current_user.entries.build do |e|

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
   
   resources :jobs do
-    resources :entries, only:[:create]
+    resources :entries, only:[:show, :create]
   end
   
   resources :entries, only:[:index]
