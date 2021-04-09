@@ -16,7 +16,7 @@ class EntriesController < ApplicationController
       e.job = job
     end
     if @entry.save
-      redirect_to root_path, notice:"Success"
+      redirect_to root_path, notice:"応募が完了しました。企業様からの連絡をお待ちください。"
     end  
   end
   

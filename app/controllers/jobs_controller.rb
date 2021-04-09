@@ -17,9 +17,9 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     if @job.save
       redirect_to root_path
-      flash[:notice] = "Success" 
+      flash[:notice] = "求人情報が投稿されました。" 
     else
-      flash[:alert] = "save error"
+      flash[:alert] = "投稿に失敗しました。"
       render :new
     end  
   end
@@ -32,9 +32,9 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     if @job.update(job_params)
       redirect_to root_path
-      flash[:notice] = "Success" 
+      flash[:notice] = "求人情報が更新されました。" 
     else
-      flash[:alert] = "save error"
+      flash[:alert] = "更新に失敗しました"
       render :edit
     end  
   end
@@ -43,7 +43,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @job.destroy
     redirect_to root_path
-    flash[:notice] = "Success" 
+    flash[:notice] = "求人を削除しました。" 
   end
 
   private

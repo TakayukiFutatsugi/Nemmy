@@ -13,7 +13,7 @@ class ScoutsController < ApplicationController
       s.message = params[:message]
     end
     if @scout.save
-      redirect_to root_path, notice:"Success"
+      redirect_to root_path, notice:"スカウトを送りました。"
     end  
   end
   
