@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_053251) do
+ActiveRecord::Schema.define(version: 2021_04_09_181156) do
 
   create_table "clients", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -60,6 +60,24 @@ ActiveRecord::Schema.define(version: 2021_04_06_053251) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_jobs_on_client_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "room_id", null: false
+    t.boolean "is_user"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer "client_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_rooms_on_client_id"
+    t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
   create_table "scouts", force: :cascade do |t|
@@ -122,6 +140,9 @@ ActiveRecord::Schema.define(version: 2021_04_06_053251) do
   add_foreign_key "entries", "jobs"
   add_foreign_key "entries", "users"
   add_foreign_key "jobs", "clients"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "rooms", "clients"
+  add_foreign_key "rooms", "users"
   add_foreign_key "scouts", "clients"
   add_foreign_key "scouts", "users"
 end

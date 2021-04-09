@@ -6,6 +6,7 @@ class User < ApplicationRecord
          
   has_many :entries
   has_many :scouts
+  has_many :rooms
   
   validates :familyName, presence: true
   validates :familyNameDetail, presence: true

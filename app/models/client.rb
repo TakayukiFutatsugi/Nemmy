@@ -6,6 +6,7 @@ class Client < ApplicationRecord
   
   has_many :jobs, dependent: :destroy
   has_many :scouts
+  has_many :rooms
   
   validates :name, presence: true, length: { maximum: 50 }
   validates :industry, length: { maximum: 50 }
