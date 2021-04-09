@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'semantic-ui-sass'
+gem 'activeadmin'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
