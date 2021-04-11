@@ -1,0 +1,26 @@
+<h2>チャット一覧</h2>
+</br>
+
+<% if user_signed_in? %>
+  <% @rooms.each do |room| %>
+    <p><strong><%= room.client.name %>様</strong></p>
+    <p><%= room.created_at.strftime('%Y年%m月%d日') %>にチャットを開始しました</p>
+    <p><%= room.messages.last %></p>
+    <%= link_to "チャット", room_path(room), class:"ui blue button right floated" %>
+    </br>
+    </br>
+    <div class="ui divider"></div>
+  <% end %>
+<% end %>
+
+<% if client_signed_in? %>
+  <% @rooms.each do |room| %>
+    <p><strong><%= room.user.familyName + room.user.lastName %>様</strong></p>
+    <p><%= room.created_at.strftime('%Y年%m月%d日') %>にチャットを開始しました</p>
+    <p><%= room.messages.last %></p>
+    <%= link_to "チャット", room_path(room), class:"ui blue button right floated" %>
+    </br>
+    </br>
+    <div class="ui divider"></div>
+  <% end %>
+<% end %>

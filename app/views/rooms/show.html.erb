@@ -1,45 +1,54 @@
-<h1>チャットサンプル</h1>
 <% if user_signed_in? %>
-  <h3><% @client.name %>とのチャットルーム</h3>
-  <div class="chat-field">
-    <% @messages.each do |m| %>
-      <!-- メッセージがUserによるものだったら -->
-      <% if m.is_user %>
-        <!-- メッセージを右に寄せる -->
-        <div class="right-message">
-          <%= m.content %>
-        </div>
-      <!-- メッセージがclientによるものだったら -->
-      <% else %>
-        <!-- メッセージを左に寄せる -->
-        <div class="left-message">
-          <%= m.content %>
-        </div>
+  <h2><%= @client.name %>様とのチャット</h2>
+  </br>
+  <div class="ui segment">
+    <div class="chat-field">
+      <% @messages.each do |m| %>
+        <% if m.is_user %><!-- メッセージがUserによるものだったら -->
+          <div class="right-message"><!-- メッセージを右に寄せる -->
+            <div class="ui right pointing label">
+              <%= m.content %>
+            </div>  
+          </div>
+        <% else %><!-- メッセージがclientによるものだったら -->
+          <div class="left-message"><!-- メッセージを左に寄せる -->
+            <div class="ui left pointing label">
+              <%= m.content %>
+            </div>  
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  </div>  
 <% elsif client_signed_in?%>
-  <h3><%= @user.familyName %>とのチャットルーム</h3>
-  <div class="chat-field">
-    <% @messages.each do |m| %>
-      <!-- メッセージがUserによるものだったら -->
-      <% if m.is_user %>
-        <!-- メッセージを左に寄せる -->
-        <div class="left-message">
-          <%= m.content %>
-        </div>
-      <!-- メッセージがclientによるものだったら -->
-      <% else %>
-        <!-- メッセージを右に寄せる -->
-        <div class="right-message">
-          <%= m.content %>
-        </div>
+  <h2><%= @user.familyName %>様とのチャット</h2>
+  </br>
+  <div class="ui segment">
+    <div class="chat-field content">
+      <% @messages.each do |m| %>
+        <% if m.is_user %><!-- メッセージがUserによるものだったら -->
+          <div class="left-message"><!-- メッセージを左に寄せる -->
+            <div class="ui left pointing label">
+              <%= m.content %>
+            </div>
+          </div>
+        <% else %><!-- メッセージがclientによるものだったら -->
+          <div class="right-message"><!-- メッセージを右に寄せる -->
+            <div class="ui right pointing label">
+              <%= m.content %>
+            </div>  
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 <% end %>
 
-<%= form_for [@room, @message] do |f| %>
-  <%= f.text_field :content %>
-  <%= f.submit "メッセージを送る"%>
-<% end %>
+<div>
+  <%= form_for [@room, @message] do |f| %>
+    <div class="ui form">
+      <%= f.text_field :content %>
+      <%= f.submit "送信", class:"ui blue button right floated" %>
+    </div>
+  <% end %>
+</div>

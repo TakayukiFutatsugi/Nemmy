@@ -1,5 +1,15 @@
 class RoomsController < ApplicationController
   before_action :authenticate_client!, only:[:create]
+  
+  def index
+    if user_signed_in?
+      @rooms = Room.where(user_id: current_user).order(id: "DESC")
+    end
+    if client_signed_in?
+      @rooms = Room.where(client_id: current_client).order(id: "DESC")
+    end
+  end  
+  
   def show
     @room = Room.find(params[:id]) #ルーム情報の取得
     @message = Message.new #新規メッセージ投稿
@@ -23,10 +33,6 @@ class RoomsController < ApplicationController
   end
   
   def create
-    # if user_signed_in?
-    #   #userがログインしてたらuser_idを, clientがログインしてたらclient_idを@roomにいれる
-    #   @room = Room.new(room_client_params)
-    #   @room.user_id = current_user.id
     if client_signed_in?
       @room = Room.new(room_user_params)
       @room.client_id = current_client.id

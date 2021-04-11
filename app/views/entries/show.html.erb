@@ -1,5 +1,4 @@
 <h2><%= @user.familyName + @user.lastName %>様詳細</h2>
-<p>*記載のメールアドレスまで連絡を差し上げてください</p>
 </br>
 <div>
   <table class="ui definition table">
@@ -93,10 +92,6 @@
         <td><%= @user.product %></td>
       </tr>
       <tr>
-        <td>メールアドレス</td>
-        <td><%= @user.email %> </td>
-      </tr>
-      <tr>
         <td>自己紹介</td>
         <td><%= @user.introduction %></td>
       </tr>
@@ -114,4 +109,8 @@
       </tr>
     </tbody>
   </table>
+  <%= form_for Room.new do |f| %>
+    <%= f.hidden_field :user_id, :value => @user.id %>
+    <%= f.submit "チャット", class:"ui blue button right floated" %>
+  <% end %>
 </div>

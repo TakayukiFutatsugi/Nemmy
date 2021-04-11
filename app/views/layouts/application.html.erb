@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag 'favicon.png' %>
@@ -19,18 +18,20 @@
             <%= link_to "仕事一覧", jobs_path, class:"item" %>
             <%= link_to "企業様一覧", clients_path, class:"item" %>
             <%= link_to "スカウト管理", scouts_path, class:"item" %>
+            <%= link_to "チャット", rooms_path, class:"item" %>
             <%= link_to "プロフィール編集", edit_user_registration_path, class:"item" %>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"item" %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "ログアウトしてよろしいですか?" }, class:"item" %>
           <% elsif client_signed_in? %>
             <%= link_to "仕事一覧", jobs_path, class:"item" %>
             <%= link_to "求職者様一覧", users_path, class:"item" %>
             <%= link_to "応募管理", entries_path, class:"item" %>
+            <%= link_to "チャット", rooms_path, class:"item" %>
             <%= link_to "プロフィール編集", edit_client_registration_path, class:"item" %>
             <%= link_to "ログアウト", destroy_client_session_path, method: :delete, class:"item" %>
           <% else %>
             <%= link_to "仕事一覧", jobs_path, class:"item" %>
             <%= link_to "採用担当者様はこちら", new_client_session_path, class:"item" %>
-            <%= link_to "求職者様はこちら", new_user_session_path, class:"item" %>
+            <%= link_to "求職者様はこちら", new_user_session_path, data: { confirm: "ログアウトしてよろしいですか?" }, class:"item" %>
           <% end %>
         </div>
       </div> 

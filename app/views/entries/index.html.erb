@@ -15,19 +15,17 @@
             <p><%= truncate entry.user.introduction, length: 50, omission: '...'%>
             </br>
             <div class="right floated">
-              <%= link_to "詳細", job_entry_path(entry.job, entry.user), class:"ui blue button" %>
+              <div class="ui buttons">
+                <%= link_to "詳細", job_entry_path(entry.job, entry.user), class:"ui blue button" %>
+                <div>  
+                  <%= form_for Room.new do |f| %>
+                    <%= f.hidden_field :user_id, :value => entry.user.id %>
+                    <%= f.submit "チャット", class:"ui blue button" %>
+                  <% end %>
+                </div>
+              </div>  
             </div>
           </div>
-          <!-- もしチャットルームがあったらそのチャットページへ。なければ新たなチャットルームを作成 -->
-          <!--if entry.user_id.include?(user.id)-->
-          <!-- <br>-->
-          <!--link_to "チャットへ", room_path(current_client.rooms.find_by(user_id: entry.user.id))<br>-->
-          <!--else-->
-            <%= form_for Room.new do |f| %>
-              <%= f.hidden_field :user_id, :value => entry.user.id %>
-              <%= f.submit %>
-            <% end %>
-          <!--end-->
         </div>
       </div>
     <% end %>  

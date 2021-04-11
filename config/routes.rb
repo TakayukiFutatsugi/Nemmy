@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   resources :scouts, only:[:index]
   
-  resources :rooms, only:[:show, :create] do
+  resources :rooms, only:[:index, :show, :create] do
     resources :messages, only:[:create]
   end
 
