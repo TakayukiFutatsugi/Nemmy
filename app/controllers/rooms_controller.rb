@@ -39,11 +39,11 @@ class RoomsController < ApplicationController
     else
       redirect_to "/"
     end
-  
+    
     if @room.save
       redirect_to :action => "show", :id => @room.id
     else
-      redirect_to "/"
+      redirect_to rooms_path
     end
   end
   

@@ -13,7 +13,9 @@ class ScoutsController < ApplicationController
       s.message = params[:message]
     end
     if @scout.save
-      redirect_to root_path, notice:"スカウトを送りました。"
+      redirect_to root_path
+      flash[:notice] = "スカウトを送りました。"
+      # scoutNoticeMailer.with(to: user.email, name: current_client.name, familyName: user.familyName, lastName: user.lastName).scoutNotice.deliver_now
     end  
   end
   

@@ -40,10 +40,13 @@ class JobsController < ApplicationController
   end
   
   def destroy
-    @job = Job.find(params[:id])
-    @job.destroy
-    redirect_to root_path
-    flash[:notice] = "求人を削除しました。" 
+    @job = Job.find_by(id: params[:id])
+    if @job.client == current_client
+      flash[:notice] = "削除しました" if @job.destroy
+    else
+      flash[:alert] = "削除できませんでした"
+    end
+    redirect_to jobs_path
   end
 
   private

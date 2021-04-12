@@ -7,13 +7,26 @@ Rails.application.configure do
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-
   # Do not eager load code on boot.
   config.eager_load = false
-
+  config.action_mailer.delivery_method = :file
   # Show full error reports.
   config.consider_all_requests_local = true
-
+  
+  # mailer setting
+  # config.action_mailer.default_url_options = { host: 'https://21693de6b04c443e8f2ee08240cde445.vfs.cloud9.ap-northeast-1.amazonaws.com/', port: 3000 }
+  # config.action_mailer.default_url_options = { host: 'http://127.0.0.1:8080' }
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   :address => 'smtp.gmail.com',
+  #   :port => 587,
+  #   :user_name => 'jeopardy1216@gmail.com',
+  #   :password => 'yoqrknfrzrbraojr',
+  #   :authentication => :plain,
+  #   :enable_starttls_auto => true
+  # }
+  
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
